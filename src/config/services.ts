@@ -1,0 +1,1 @@
+export const NAT_SERVICE = 'NAT_SERVICE'
