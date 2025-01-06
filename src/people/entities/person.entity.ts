@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { DocumentType } from "../enums/document_type.enum";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { DocumentType } from '../enums/document_type.enum';
 
 @Entity()
 export class Person {
@@ -9,7 +9,7 @@ export class Person {
   @Column({ type: 'enum', enum: DocumentType })
   document_type: string;
 
-  @Column({ type: 'varchar', length: 20 })
+  @Column({ type: 'varchar', length: 20, unique: true })
   document: string;
 
   @Column({ type: 'varchar', length: 50 })
@@ -18,7 +18,7 @@ export class Person {
   @Column({ type: 'varchar', length: 50 })
   last_name: string;
 
-  @Column({ type: 'varchar', length: 15, nullable: true })
+  @Column({ type: 'varchar', length: 15 })
   phone_one: string;
 
   @Column({ type: 'varchar', length: 15, nullable: true })
@@ -27,7 +27,7 @@ export class Person {
   @Column({ type: 'varchar', length: 100, nullable: true })
   email: string;
 
-  @Column({ type: 'varchar', length: 255, nullable: true })
+  @Column({ type: 'varchar', length: 255, nullable: true, select: false})
   password: string;
 
   @Column({ type: 'text', nullable: true })
@@ -39,6 +39,10 @@ export class Person {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  @Column({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
   updated_at: Date;
 }

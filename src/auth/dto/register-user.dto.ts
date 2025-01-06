@@ -4,7 +4,7 @@ export class RegisterUserDto {
   @IsString()
   @MinLength(7)
   @MaxLength(11)
-  document : number;
+  document : string;
 
   @IsEmail()
   @IsString()
